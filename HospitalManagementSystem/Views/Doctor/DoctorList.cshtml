@@ -1,0 +1,40 @@
+﻿@model HospitalManagementSystem.ViewModel.DoctorViewModel.DoctorListViewModel;
+
+<div class="container mt-3">
+    <div class="d-flex justify-content-between">
+        <h1>All Doctors</h1>
+        <a href="@Url.Action("AddDoctor", "Doctor")" class="btn btn-primary mt-2">Add Doctor</a>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var doctor in Model.Doctors)
+        {
+            
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="@doctor.ImageURL" class="card-img-top img" alt="@doctor.DoctorName">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2 class="card-title">@doctor.DoctorName</h2>
+                            <h3>@doctor.Address</h3>
+                        </div>
+                        <div>
+                            <h4>@doctor.Gender</h4>
+                        </div>
+                        <div>
+                            <h4>@doctor.Description</h4>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-2">
+                            <a href="@Url.Action("UpdateDoctor", "Doctor", new { id = doctor.DoctorId })" class="btn btn-primary">Edit Doctor</a>
+                            <a href="@Url.Action("DeleteDoctor", "Doctor", new { id = doctor.DoctorId })" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </>
+        
+</div>
+<div class="d-flex justify-content-end">
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-2">First Page</a>
+</<div>

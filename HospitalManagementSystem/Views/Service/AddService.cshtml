@@ -1,0 +1,50 @@
+﻿@model HospitalManagementSystem.ViewModel.ServiceViewModel.AddServiceViewModel;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Service Info";
+}
+
+<h1 class="text-center mb-4" style="font-weight: bold; color: #007bff;">Service Information</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow" style="background-color: #f8f9fa; border-radius: 15px;">
+                <div class="card-body">
+                    @using (Html.BeginForm("AddService", "Service", FormMethod.Post, new { @class = "needs-validation", enctype = "multipart/form-data", novalidate = "novalidate" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.ServiceId, new { @class = "form-control", placeholder = "Enter service ID" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.ServiceName, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control", placeholder = "Enter service name" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3", placeholder = "Enter service description" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.ImageURL, new { @class = "form-control", placeholder = "Enter image URL" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "number", placeholder = "Enter additional price" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">Register</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

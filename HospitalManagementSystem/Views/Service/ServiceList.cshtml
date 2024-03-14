@@ -1,0 +1,28 @@
+﻿@model HospitalManagementSystem.ViewModel.ServiceViewModel.ServiceListViewModel;
+
+<div class="container mt-3">
+    <div class="d-flex justify-content-between">
+        <h2>All Services</h2>
+        <a href="@Url.Action("AddService", "Service")" class="btn btn-primary mt-2">Add Service</a>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var service in Model.Services)
+        {
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column justify-content-between align-items-center">
+                            <img src="@service.ImageURL" class="card-img-top img" alt="@service.ServiceName">
+                            <h2 class="card-title">@service.ServiceName</h2>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-2">
+                            <a href="@Url.Action("UpdateService", "Service", new { id = service.ServiceId })" class="btn btn-primary">Edit Service</a>
+                            <a href="@Url.Action("DeleteService", "Service", new { id = service.ServiceId })" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

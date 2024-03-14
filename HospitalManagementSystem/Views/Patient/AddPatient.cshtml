@@ -1,0 +1,130 @@
+﻿@* @model HospitalManagement.ViewModel.PatientViewModel.AddPatientViewModel;
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Patient Info";
+}
+
+<h1> Patient-INFORMATION</h1>
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewBag.Title</h2>
+    @using (Html.BeginForm("AddPatient", "Patient", FormMethod.Post, new { @class = "needs-validation", enctype = "multipart/form-data", novalidate = "novalidate" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PatientId)
+            @Html.TextBoxFor(model => model.PatientId, new { @class = "form-control", placeholder = "Enter patient's ID" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PatientName)
+            @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control", placeholder = "Enter patient's name" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age)
+            @Html.TextBoxFor(model => model.Age, new { @class = "form-control", type = "number", placeholder = "Enter patient's age" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender)
+            @Html.DropDownListFor(model => model.Gender, new SelectList(new[]
+                     {
+        new SelectListItem { Text = "Select Gender", Value = "" },
+        new SelectListItem { Text = "Male", Value = "Male" },
+        new SelectListItem { Text = "Female", Value = "Female" },
+        new SelectListItem { Text = "Other", Value = "Other" }
+        }, "Value", "Text"), new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address)
+            @Html.TextAreaFor(model => model.Address, new { @class = "form-control", rows = "3", placeholder = "Enter patient's address" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Discription)
+            @Html.TextAreaFor(model => model.Discription, new { @class = "form-control", rows = "3", placeholder = "Enter patient's Discription" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number)
+            @Html.TextBoxFor(model => model.Number, new { @class = "form-control", type = "tel", placeholder = "Enter patient's phone number" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    }
+</div>
+
+
+ *@
+
+ @model HospitalManagementSystem.ViewModel.PatientViewModel.AddPatientViewModel;
+ 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Patient Info";
+}
+
+<h1 class="text-center mb-4" style="font-weight: bold; color: #007bff;">Patient Information</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow" style="background-color: #f8f9fa; border-radius: 15px;">
+                <div class="card-body">
+                    @using (Html.BeginForm("AddPatient", "Patient", FormMethod.Post, new { @class = "needs-validation", enctype = "multipart/form-data", novalidate = "novalidate" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.PatientId, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.PatientId, new { @class = "form-control", placeholder = "Enter patient's ID" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.PatientName, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control", placeholder = "Enter patient's name" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Age, new { @class = "form-control", type = "number", placeholder = "Enter patient's age" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-label" })
+                            @Html.DropDownListFor(model => model.Gender, new SelectList(new[]
+                                     {
+                        new SelectListItem { Text = "Select Gender", Value = "" },
+                        new SelectListItem { Text = "Male", Value = "Male" },
+                        new SelectListItem { Text = "Female", Value = "Female" },
+                        new SelectListItem { Text = "Other", Value = "Other" }
+                        }, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Short address" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3", placeholder = "Enter patient's Discription" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(model => model.Number, new { @class = "form-control", type = "tel", placeholder = "Enter patient's phone number" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">Register</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

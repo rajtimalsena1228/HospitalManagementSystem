@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex justify-content-between">
+    <a href="@Url.Action("DoctorList", "Doctor")" class="btn btn-primary mt-2">Doctor List</a>
+    <a href="@Url.Action("PatientList", "Patient")" class="btn btn-primary mt-2">Patient List</a>
+    <a href="@Url.Action("ServiceList", "Service")" class="btn btn-primary mt-2">Service List</a>
+</div>
+
